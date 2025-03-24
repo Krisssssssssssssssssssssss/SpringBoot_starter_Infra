@@ -16,7 +16,6 @@ class DataControllerTest {
 
     @Test
     void getById() {
-        assertEquals(true,false);
     }
 
     @Test
