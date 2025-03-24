@@ -22,4 +22,11 @@ public class DataService {
     public DataModel addData(DataModel dataModel) {
         return dataRepository.save(dataModel);
     }
+    public DataModel editData(DataModel dataModel) throws Exception {
+        DataModel model = dataRepository.findById(dataModel.getId()).orElseThrow();
+        return dataRepository.save((model));
+    }
+    public void deleteById (String id) {
+        dataRepository.deleteById(id);
+    }
 }
