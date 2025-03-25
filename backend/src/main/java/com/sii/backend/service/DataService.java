@@ -8,12 +8,15 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 public class DataService {
     private final DataRepository dataRepository;
 
-    public String getById(String id) {
-         return dataRepository.findById(id).orElseThrow().getField();
+    public DataService (DataRepository dataRepository){
+        this.dataRepository = dataRepository;
+    }
+
+    public DataModel getById(String id) {
+         return dataRepository.findById(id).orElseThrow();
     }
     public List<DataModel> getAll() {
         return dataRepository.findAll();

@@ -9,28 +9,31 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@AllArgsConstructor
 @RestController
 @RequestMapping("/api")
 public class DataController {
 
     private final DataService dataService;
 
+    public DataController (DataService dataService){
+        this.dataService = dataService;
+    }
+
     @GetMapping
-    public List<DataModel> getAll () {
+    public List<DataModel> getAllData () {
         return dataService.getAll();
     }
     @GetMapping("find_by_id/{id}")
-    public String getById (@PathVariable String id) {
+    public DataModel getDataById (@PathVariable String id) {
         return dataService.getById(id);
     }
     @PostMapping
-    public DataResponse getData(@RequestBody DataRequest request) throws Exception {
+    public DataResponse addData(@RequestBody DataRequest request) throws Exception {
         DataModel model = request.toModel();
         return DataResponse.from(dataService.addData(model));
     }
     @PutMapping("/{id}")
-    public DataResponse deleteUser(@PathVariable String id, @RequestBody DataRequest request) throws Exception {
+    public DataResponse editData(@PathVariable String id, @RequestBody DataRequest request) throws Exception {
         DataModel model = request.toModel();
         model.setId(id);
         return DataResponse.from(dataService.addData(model));
