@@ -70,6 +70,7 @@ class DataControllerTest {
     }
 
     @Test
+    @DirtiesContext
     void getAllData() throws Exception {
         DataModel dataOne = DataModel.builder().id("1").field(FIELD_ONE).build();
         DataModel dataTwo = DataModel.builder().id("2").field(FIELD_TWO).build();
