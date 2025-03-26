@@ -1,1 +1,2 @@
-Docu on how to start the project
+Just a start-up template:
+API, mongoDB, Dockerfiles, Full FolderStructure
